@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8435295605656265666}
   - component: {fileID: 8193897221724701846}
   - component: {fileID: 6816176157079131194}
+  - component: {fileID: 3423095938543688884}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -28,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 136116323669145721}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.418088, y: -11.577277, z: 26.536345}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -105,3 +106,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3423095938543688884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136116323669145721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 641bbde80314ac249af30048a1cf868f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilePosotion: {x: 0, y: 0, z: 0}
+  isMonsterOn: 0
+  isPieceOn: 0
+  character: {fileID: 0}

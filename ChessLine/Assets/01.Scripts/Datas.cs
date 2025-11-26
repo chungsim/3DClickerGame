@@ -58,7 +58,35 @@ public static class Datas
             new Vector2(1,1) 
         }, 1)
         }
-    };   
+    };
+
+    public static Dictionary<PieceType, Color> pieceColorFair = 
+    new Dictionary<PieceType, Color>
+    {
+        {PieceType.Pawn, new Color(255f / 255f, 255f / 255f, 255f / 255f)},
+        {PieceType.Rook, new Color(100f / 255f, 100f / 255f, 100f / 255f)},
+        {PieceType.Knight, new Color(135f / 255f, 169f / 255f, 255f / 255f)},
+        {PieceType.Bishop, new Color(255f / 255f, 143f / 255f, 143f / 255f)},
+        {PieceType.Queen, new Color(175f / 255f, 71f / 255f, 255f / 255f)},
+        {PieceType.King, new Color(255f / 255f, 215f / 255f, 0f / 255f)},
+    };
+
+    public static Dictionary<PieceType, Sprite> piceeIconFair =
+    new Dictionary<PieceType, Sprite>
+    {
+        {PieceType.Pawn, Resources.Load<Sprite>("chess_pawn_white")},
+        {PieceType.Rook, Resources.Load<Sprite>("chess_rook_white")},
+        {PieceType.Knight, Resources.Load<Sprite>("chess_knight_white")},
+        {PieceType.Bishop, Resources.Load<Sprite>("chess_bishop_white")},
+        {PieceType.Queen, Resources.Load<Sprite>("chess_queen_white")},
+        {PieceType.King, Resources.Load<Sprite>("chess_king_white")}
+
+    };
+
+    public static Dictionary<int, int> levelExpFair = new Dictionary<int, int>
+    {
+        
+    };
 }
 
 public class PieceVector

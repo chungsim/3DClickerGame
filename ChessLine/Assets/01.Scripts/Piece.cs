@@ -6,6 +6,8 @@ public class Piece : Character
 {
     //private Dice curDice;
 
+    public DiceData diceData;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
