@@ -13,7 +13,7 @@ public class SaveData
     public int makedDiceNum;
 
     public List<SaveDiceData> ownedDiceList;
-    public SaveDiceData[] equidDiceList = new SaveDiceData[6];
+    public SaveDiceData[] equidDiceList = new SaveDiceData[8];
 }
 
 [System.Serializable]
