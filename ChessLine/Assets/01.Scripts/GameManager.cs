@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     private Coroutine coroutine;
     private bool isPlayerAlive = true;
     private bool isTimerEnd = false;
+    public int difficulty;
 
     void Awake()
     {
@@ -31,10 +33,41 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 씬 이름 검사
+        if (scene.name == "MainScene")
+        {
+            Debug.Log("메인씬 로드됨!");
+            StartRoutine();
+        }
+        else
+        {
+            Debug.Log("게임 종료!");
+            StopCoroutine(coroutine);
+            coroutine = null;
+
+            StopAllGameRoutines();
+        }
+    }
+
 
     public void StartRoutine()
     {
-        coroutine = StartCoroutine(StartState());   
+        SaveLoadManager.Instance.Load();
+        coroutine = StartCoroutine(StartState());
+        difficulty = PlayerPrefs.GetInt("difficulty", 0);
+        CreditManager.Instance.UpdateCreditUI();
     } 
 
     IEnumerator StartState()
@@ -90,11 +123,15 @@ public class GameManager : MonoBehaviour
             coroutine = StartCoroutine(SpawnState());
         }
 
+        // 게임 자동 저장
+        SaveLoadManager.Instance.Save();
+
         yield return null;
     }
 
     IEnumerator EndState()
     {
+
         // 플레이어 체력 소진으로 인한 게임 일시정지
         yield return new WaitForSeconds(routineGap);
 
@@ -174,5 +211,12 @@ public class GameManager : MonoBehaviour
     {
         UIManager.Instance.gameUI.UpdateHPBar();
         UIManager.Instance.gameUI.UpdateExpBar();
+    }
+
+    void StopAllGameRoutines()
+    {
+        PieceManager.Instance.StopPieceStateRoutine();
+        MonsterManager.Instance.DespawnAllMonster();
+        TileSpawner.Instance.DespawnMap();
     }
 }

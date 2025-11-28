@@ -17,11 +17,11 @@ public class Monster : Character
     {
         if(monsterData != null)
         {
-            maxHP = monsterData.maxHP;
-            curHp = monsterData.maxHP;
+            maxHP = monsterData.maxHP + GameManager.Instance.difficulty * 10;
+            curHp = monsterData.maxHP + GameManager.Instance.difficulty * 10;
             atk = monsterData.atk;
-            def = monsterData.def;
-            dropGold = monsterData.dropGold;
+            def = monsterData.def + GameManager.Instance.difficulty;
+            dropGold = monsterData.dropGold + GameManager.Instance.difficulty * 10;
 
             initMonsterData = monsterData;
         }

@@ -8,7 +8,7 @@ public class PieceStateMachine : MonoBehaviour
 {
     Piece thisPiece;
     Coroutine curCoroutine;
-    DiceData diceData;
+    public DiceData diceData;
     [SerializeField] private PieceType attackPieceType;
     [SerializeField] Image pieceIcon;
     [SerializeField] Image pieceIconCooldown;
@@ -28,19 +28,16 @@ public class PieceStateMachine : MonoBehaviour
     public void StopState()
     {
         StopCoroutine(curCoroutine);
+        curCoroutine = null;
     }
 
     IEnumerator DiceState()
     {
         Debug.Log("Dice State Start");
 
-        if(thisPiece.diceData == null)
+        if(diceData == null)
         {
             diceData = Resources.Load<DiceData>("NormalDice");
-        }
-        else
-        {
-            diceData = thisPiece.diceData;
         }
 
         attackPieceType = diceData.diceFaces[Random.Range(0, diceData.diceFaces.Length)];

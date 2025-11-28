@@ -19,7 +19,7 @@ public class ParticleManager : MonoBehaviour
 
     public void SpawnAttackParticle(Vector3 pos, PieceType pieceType)
     {    
-        GameObject obj = Instantiate(attackParticlePrefab, pos, Quaternion.identity);
+        GameObject obj = Instantiate(attackParticlePrefab, pos, Quaternion.identity, transform);
         obj.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
         var main = attackParticlePrefab.GetComponent<ParticleSystem>().main;
         main.startColor = Datas.pieceColorFair[pieceType];

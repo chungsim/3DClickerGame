@@ -9,7 +9,7 @@ public class MonsterManager : MonoBehaviour
     public static MonsterManager Instance { get; private set; }
 
     [SerializeField] private GameObject monsterFrame;
-    private Vector3 monsterStartPos = new Vector3(0, 1, 7);
+    private Vector3 monsterStartPos = new Vector3(0, 0.5f, 7);
     [SerializeField] private MonsterPool[] monsterPools;
 
     public List<GameObject[]> spawnedMonsters = new List<GameObject[]>();

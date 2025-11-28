@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class CreditManager : MonoBehaviour
@@ -34,7 +35,7 @@ public class CreditManager : MonoBehaviour
         UpdateCreditUI();
     }
 
-    void UpdateCreditUI()
+    public void UpdateCreditUI()
     {
         UIManager.Instance.gameUI.UpdateCredit();
     }
